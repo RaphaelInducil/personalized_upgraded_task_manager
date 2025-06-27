@@ -1,3 +1,9 @@
+# Add class
+class Task:
+    def __init__(self, title, description):
+        self.title = title
+        self.description = description
+
 # Initialize empty list
 tasks = []
 
@@ -5,7 +11,7 @@ tasks = []
 def add_task():
     title = input("Enter task title: ")
     description = input("Enter task description: ")
-    tasks.append({"title": title, "description": description})
+    tasks.append(Task(title, description))
     print("Task added successfully!")
 
 # Task view
@@ -13,7 +19,7 @@ def view_tasks():
     if tasks:
         print("Tasks:")
         for idx, task in enumerate(tasks, start=1):
-            print(f"{idx}. Title: {task['title']}, Description: {task['description']}")
+            print(f"{idx}. Title: {task['title']}, Description: {task.description}")
     else:
         print("No tasks available.")
 
@@ -26,9 +32,9 @@ def update_task():
             new_title = input("Enter new title (Press Enter to skip): ")
             new_description = input("Enter new description (Press Enter to skip): ")
             if new_title:
-                tasks[task_index]['title'] = new_title
+                tasks[task_index].title = new_title
             if new_description:
-                tasks[task_index]['description'] = new_description
+                tasks[task_index].description = new_description
             print("Task updated successfully!")
         else:
             print("Invalid task index.")
@@ -42,7 +48,7 @@ def delete_task():
         task_index = int(input("Enter the index of the task to delete: ")) - 1
         if 0 <= task_index < len(tasks):
             deleted_task = tasks.pop(task_index)
-            print(f"Task '{deleted_task['title']}' deleted successfully!")
+            print(f"Task '{deleted_task.title}' deleted successfully!")
         else:
             print("Invalid task index.")
     else:
