@@ -33,6 +33,7 @@ def add_task():
     title = input("Enter task title: ")
     description = input("Enter task description: ")
     tasks.append(Task(title, description))
+    tasks.append(Task)
     print("Task added successfully!")
 
 # Task view
@@ -97,3 +98,11 @@ while True:
         break
     else:
         print("Invalid choice. Please select a valid option (1-5).")
+
+class WorkTask(Task):
+    def display(self, index):
+        print(f"{index}. [Work] {self.get_title()}")
+
+class PersonalTask(Task):
+    def display(self, index):
+        print(f"{index}. [Personal] {self.get_title()} - {self.get_description()}")
