@@ -1,9 +1,8 @@
 # Initialize empty list
 tasks = []
-def add_task(task):
 
 # Add task list
-def add_task(task):
+def add_task():
     title = input("Enter task title: ")
     description = input("Enter task description: ")
     tasks.append({"title": title, "description": description})
