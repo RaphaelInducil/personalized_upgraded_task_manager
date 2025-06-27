@@ -1,4 +1,4 @@
-# Add class
+# Task class
 class Task:
     def __init__(self, title, description):
         self.title = title
@@ -6,10 +6,10 @@ class Task:
 
     def get_title(self):
         return self.title
-    
+
     def get_description(self):
         return self.description
-    
+
     def set_title(self, title):
         self.title = title
 
@@ -24,25 +24,24 @@ class Task:
 
     def display(self, index):
         return f"{index}. Title: {self.get_title()}, Description: {self.get_description()}"
-    
-# Initialize empty list
+
+
+# Initialize task list
 tasks = []
 
-# Add task list
+# Add task
 def add_task():
     title = input("Enter task title: ")
     description = input("Enter task description: ")
     tasks.append(Task(title, description))
-    tasks.append(Task)
     print("Task added successfully!")
 
-# Task view
+# View tasks
 def view_tasks():
     if tasks:
         print("Tasks:")
         for idx, task in enumerate(tasks, start=1):
-            task.display(idx)
-            print(f"{idx}. Title: {task['title']}, Description: {task.get_description()}")
+            print(task.display(idx))
     else:
         print("No tasks available.")
 
@@ -61,20 +60,20 @@ def update_task():
     else:
         print("No tasks available.")
 
-# Function to delete a task
+# Delete task
 def delete_task():
     view_tasks()
     if tasks:
         task_index = int(input("Enter the index of the task to delete: ")) - 1
         if 0 <= task_index < len(tasks):
             deleted_task = tasks.pop(task_index)
-            print(f"Task '{deleted_task.get_title}' deleted successfully!")
+            print(f"Task '{deleted_task.get_title()}' deleted successfully!")
         else:
             print("Invalid task index.")
     else:
         print("No tasks available.")
-# Nonsense comment for commit update
-# Main loop
+
+# Main program loop
 while True:
     print("\nInteractive Task Manager")
     print("1. Add Task")
@@ -84,7 +83,7 @@ while True:
     print("5. Exit")
 
     choice = input("Select an option (1-5): ")
-    
+
     if choice == "1":
         add_task()
     elif choice == "2":
@@ -101,8 +100,8 @@ while True:
 
 class WorkTask(Task):
     def display(self, index):
-        print(f"{index}. [Work] {self.get_title()}")
+        return f"{index}. [Work] {self.get_title()} - {self.get_description()}"
 
 class PersonalTask(Task):
     def display(self, index):
-        print(f"{index}. [Personal] {self.get_title()} - {self.get_description()}")
+        return f"{index}. [Personal] {self.get_title()} - {self.get_description()}"
