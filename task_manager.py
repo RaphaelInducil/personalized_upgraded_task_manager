@@ -72,7 +72,7 @@ def delete_task():
             print("Invalid task index.")
     else:
         print("No tasks available.")
-
+# Nonsense comment for commit update
 # Main loop
 while True:
     print("\nInteractive Task Manager")
