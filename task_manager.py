@@ -16,6 +16,15 @@ class Task:
     def set_description(self, description):
         self.description = description
 
+    def update(self, title=None, description=None):
+        if title:
+            self.set_title(title)
+        if description:
+            self.set_description(description)
+
+    def display(self, index):
+        return f"{index}. Title: {self.get_title()}, Description: {self.get_description()}"
+    
 # Initialize empty list
 tasks = []
 
@@ -31,6 +40,7 @@ def view_tasks():
     if tasks:
         print("Tasks:")
         for idx, task in enumerate(tasks, start=1):
+            task.display(idx)
             print(f"{idx}. Title: {task['title']}, Description: {task.get_description()}")
     else:
         print("No tasks available.")
@@ -43,10 +53,7 @@ def update_task():
         if 0 <= task_index < len(tasks):
             new_title = input("Enter new title (Press Enter to skip): ")
             new_description = input("Enter new description (Press Enter to skip): ")
-            if new_title:
-                tasks[task_index].set_title(new_title)
-            if new_description:
-                tasks[task_index].set_description(new_description)
+            tasks[task_index].update(new_title, new_description)
             print("Task updated successfully!")
         else:
             print("Invalid task index.")
